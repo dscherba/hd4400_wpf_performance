@@ -1,0 +1,12 @@
+﻿<Window x:Class="WpfRenderPerformance.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="WPF Render Performance Control Panel" Height="147.649" Width="525" Loaded="OnLoaded" Closed="Window_Closed" Topmost="True">
+    <Grid>
+        <CheckBox Name="TransparentChk" Content="Transparent" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" IsChecked="True" Click="CheckBox_Checked" Checked="CheckBox_Checked"/>
+        <Slider Name="WindowSizeSlider" HorizontalAlignment="Left" Margin="105,80,0,0" VerticalAlignment="Top" Width="391" ValueChanged="WindowSizeSlider_ValueChanged" Value="10.0"/>
+        <Label Content="Window Size" HorizontalAlignment="Left" Margin="10,76,0,0" VerticalAlignment="Top" Width="78"/>
+        <CheckBox Name="RenderChk" Content="Update overlay (30fps)" HorizontalAlignment="Left" Margin="10,29,0,0" VerticalAlignment="Top" IsChecked="True"/>
+        <CheckBox Name="SoftwareRenderChk" Content="Force Software Render" HorizontalAlignment="Left" Margin="10,49,0,0" VerticalAlignment="Top" Checked="SoftwareRenderChk_Checked" Unchecked="SoftwareRenderChk_Checked"/>
+    </Grid>
+</Window>

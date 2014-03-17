@@ -1,0 +1,9 @@
+﻿
+<Window x:Class="WpfRenderPerformance.OverlayWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="OverlayWindow" Background="Transparent" AllowsTransparency="True" WindowStyle="None" Height="350" Width="525" Loaded="OnLoaded" Closed="Window_Closed" Left="20" Top="20">
+    <Grid>
+        <Image Name="foo"/>
+    </Grid>
+</Window>
