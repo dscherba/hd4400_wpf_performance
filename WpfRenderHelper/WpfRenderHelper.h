@@ -22,15 +22,15 @@ namespace WpfRenderHelper {
         { 
             System::Console::WriteLine("working!");
 
-            array<Byte>^ bgra = gcnew array<Byte>(640*480*4);
-
-            for (int i=0;i<640*480*4;i++) {
-				bgra[i] = 0x99; // Just a transparent gray square
-            }
-
 			while(true) {
+				array<Byte>^ bgra = gcnew array<Byte>(640*480*4);
+
+				for (int i=0;i<640*480*4;i++) {
+					bgra[i] = 0x99; // Just a transparent gray square
+				}
+
                 NewWriteableImage(bgra);
-                Threading::Thread::Sleep(33); // 30fps-ish
+                Threading::Thread::Sleep(20); // 30fps-ish
             }
         }
 	};

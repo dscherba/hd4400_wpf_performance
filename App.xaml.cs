@@ -15,5 +15,6 @@ namespace WpfRenderPerformance
     public partial class App : Application
     {
         public OverlayWindow ow_;
+        public OverlayWindow ow2_;
     }
 }
