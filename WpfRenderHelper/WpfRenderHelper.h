@@ -30,7 +30,7 @@ namespace WpfRenderHelper {
 				}
 
                 NewWriteableImage(bgra);
-                Threading::Thread::Sleep(20); // 30fps-ish
+                Threading::Thread::Sleep(30); // 30fps-ish
             }
         }
 	};

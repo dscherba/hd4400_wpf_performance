@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="WPF Render Performance Control Panel" Height="147.649" Width="525" Loaded="OnLoaded" Closed="Window_Closed" Topmost="True">
     <Grid>
-        <CheckBox Visibility="Hidden" Name="TransparentChk" Content="Transparent" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" IsChecked="True" Click="CheckBox_Checked" Checked="CheckBox_Checked"/>
+        <CheckBox Visibility="Visible" Name="TransparentChk" Content="Transparent" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" IsChecked="True" Click="CheckBox_Checked" Checked="CheckBox_Checked"/>
         <Slider Visibility="Hidden" Name="WindowSizeSlider" HorizontalAlignment="Left" Margin="105,80,0,0" VerticalAlignment="Top" Width="391" ValueChanged="WindowSizeSlider_ValueChanged" Value="10.0"/>
         <Label Visibility="Hidden" Content="Window Size" HorizontalAlignment="Left" Margin="10,76,0,0" VerticalAlignment="Top" Width="78"/>
         <CheckBox Name="RenderChk" Content="Update overlay (30fps)." HorizontalAlignment="Left" Margin="10,29,0,0" VerticalAlignment="Top" IsChecked="True"/>
@@ -13,5 +13,9 @@
         <Label Content="asdf" x:Name="WinWidth" HorizontalAlignment="Left" Margin="415,23,0,0" VerticalAlignment="Top"/>
         <Label Content="Window Height: " HorizontalAlignment="Left" Margin="311,43,0,0" VerticalAlignment="Top"/>
         <Label Content ="asdf" x:Name="WinHeight" HorizontalAlignment="Left" Margin="415,43,0,0" VerticalAlignment="Top"/>
+        <Label Content="Render FPS: " HorizontalAlignment="Left" Margin="311,69,0,0" VerticalAlignment="Top"/>
+        <Label Content ="asdf" x:Name="RenderFps" HorizontalAlignment="Left" Margin="415,69,0,0" VerticalAlignment="Top"/>
+        <Label Content="Worker Units/Sec: " HorizontalAlignment="Left" Margin="311,89,0,0" VerticalAlignment="Top"/>
+        <Label Content ="asdf" x:Name="WorkerUnits" HorizontalAlignment="Left" Margin="415,89,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

@@ -26,6 +26,7 @@ namespace WpfRenderPerformance
             InitializeComponent();
         }
 
+        DateTime prev_render_time = DateTime.Now;
         WriteableBitmap wb_source_out_;
         public void OnNewWriteableImage(Byte[] pixel)
         {
@@ -40,6 +41,10 @@ namespace WpfRenderPerformance
                     else if (foo.Source != wb_source_out_) foo.Source = wb_source_out_;
 
                     (wb_source_out_ as WriteableBitmap).WritePixels(new System.Windows.Int32Rect(0, 0, 640, 480), pixel, 640 * 4, 0);
+
+                    //System.Console.WriteLine("render update fps " + (1000.0/DateTime.Now.Subtract(prev_render_time).TotalMilliseconds).ToString());
+                    (app.MainWindow as MainWindow).RenderFps.Content = (1000.0 / DateTime.Now.Subtract(prev_render_time).TotalMilliseconds).ToString();
+                    prev_render_time = DateTime.Now;
                 }
             }));
         }

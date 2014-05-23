@@ -33,8 +33,8 @@ namespace WpfRenderPerformance
 
             if (app.ow_ == null) {
                 app.ow_ = new OverlayWindow();
-                app.ow_.Width = 800.0; // (app.MainWindow as MainWindow).WindowSizeSlider.Value / 10.0 * System.Windows.SystemParameters.PrimaryScreenWidth;
-                app.ow_.Height = 600.0; // app.ow_.Width * 480.0 / 640.0;
+                app.ow_.Width = 1024.0; // (app.MainWindow as MainWindow).WindowSizeSlider.Value / 10.0 * System.Windows.SystemParameters.PrimaryScreenWidth;
+                app.ow_.Height = 768.0; // app.ow_.Width * 480.0 / 640.0;
 
                 app.ow2_ = new OverlayWindow();
                 app.ow2_.Width = app.ow_.Width;
@@ -45,6 +45,30 @@ namespace WpfRenderPerformance
                 WinHeight.Content = app.ow_.Height.ToString();
                 app.ow_.Show();
                 app.ow2_.Show();
+
+                // And spin up a busy thread. This is our application computational load simulator.
+                // Note: this takes CPU resources, but doesn't try to simulate the computations that we're doing, nor does it
+                // create any real memory pressure. In the Real World, things would be worse.
+                Thread busyThread = new Thread(delegate()
+                    {
+                        long i = 0;
+                        DateTime last_one_hundred_mm = DateTime.Now;
+                        while (true)
+                        {
+                            i++;
+                            if (i == 100000000)
+                            {
+                                //System.Console.WriteLine("busy thread work units completed/sec " + (1000.0/DateTime.Now.Subtract(last_one_hundred_mm).TotalMilliseconds).ToString());
+                                Dispatcher.Invoke(new Action(delegate() {
+                                    (app.MainWindow as MainWindow).WorkerUnits.Content = (1000.0 / DateTime.Now.Subtract(last_one_hundred_mm).TotalMilliseconds).ToString();
+                                }));
+                                last_one_hundred_mm = DateTime.Now;
+                                i = 0;
+                            }
+                        }
+                        System.Console.WriteLine("the answer is " + i.ToString());
+                    });
+                busyThread.Start();
             }
         }
 
@@ -59,8 +83,8 @@ namespace WpfRenderPerformance
 
             app.ow_ = new OverlayWindow();
             app.ow2_ = new OverlayWindow();
-            app.ow_.Width = app.ow2_.Width = 800; // (app.MainWindow as MainWindow).WindowSizeSlider.Value / 10.0 * System.Windows.SystemParameters.PrimaryScreenWidth;
-            app.ow_.Height = app.ow2_.Height = 600; // app.ow_.Width * 480.0 / 640.0;
+            app.ow_.Width = app.ow2_.Width = 1024; // (app.MainWindow as MainWindow).WindowSizeSlider.Value / 10.0 * System.Windows.SystemParameters.PrimaryScreenWidth;
+            app.ow_.Height = app.ow2_.Height = 768; // app.ow_.Width * 480.0 / 640.0;
 
             if (TransparentChk.IsChecked.GetValueOrDefault(false)) {
                 app.ow_.AllowsTransparency = true;
